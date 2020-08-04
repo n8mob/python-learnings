@@ -2,7 +2,11 @@ Python Learnings
 ================
 
 In my years as a developer, I've found it useful to explore a language on its own terms.
-That is: to keep some code files around that are valid code files that let me try some things out.
+That is, to keep some code files around that are valid code files that let me:
+- try some things out
+- answer questions
+- resolve ambiguities
+- prove things to myself
 
 Today I thought it would be a good idea to share my ["Python Learnings" repository](https://stash.endurance.com/users/ngrigg/repos/python-learnings/browse)
 
