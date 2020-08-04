@@ -91,15 +91,11 @@ class TestLogging(TestCase):
         self.queue_handler.setFormatter(self.verbose_formatter)
         root_logger.handlers.append(self.queue_handler)
 
-        self.assertIn(self.queue_handler, root_logger.handlers, 'queue_handler should be appended to the list of handlers')
-
         root_logger.info(self.expected_log_message)
-
-        self.assertFalse(self.queue.empty(), 'qsize was >= 1, but queue.empty() is true...')
 
         actual = self.queue.get().msg
 
         self.assertIn(root_logger.name, actual, 'expecting "root" in log message')
         self.assertNotIn(self.parent_log_name, actual, 'not expecting "test_log_1" in log message')
         self.assertIn(logging.getLevelName(root_logger.level), actual, 'expecting "INFO" in log message')
-        self.assertNotIn(__name__, actual, 'not expecting class name in log message')
+        self.assertNotIn(__name__, actual, 'not module class name in log message')
