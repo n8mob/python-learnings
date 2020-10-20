@@ -99,3 +99,27 @@ class TestLogging(TestCase):
         self.assertNotIn(self.parent_log_name, actual, 'not expecting "test_log_1" in log message')
         self.assertIn(logging.getLevelName(root_logger.level), actual, 'expecting "INFO" in log message')
         self.assertNotIn(__name__, actual, 'not module class name in log message')
+
+    def test_log_levels(self):
+        self.assertEqual(logging.INFO, self.log.level)
+
+        should_not_show_up = 'should not show up'
+        self.log.debug(should_not_show_up)
+
+        self.assertTrue(self.queue.empty(), 'info log level should ignore debug log message')
+
+    def test_change_level(self):
+        self.assertEqual(logging.INFO, self.log.level)
+
+        should_not_show_up = 'should not show up'
+        self.log.debug(should_not_show_up)
+
+        self.assertTrue(self.queue.empty(), 'info log level should ignore debug log message')
+
+        self.log.setLevel(logging.DEBUG)
+        should_show_up = 'should show up'
+        self.log.debug(should_show_up)
+
+        self.assertFalse(self.queue.empty())
+        acutal_log_record = self.queue.get()
+        self.assertEqual(should_show_up, acutal_log_record.message)
