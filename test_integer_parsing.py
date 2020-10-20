@@ -28,3 +28,7 @@ class TestIntegerParsing(TestCase):
 
     def test_signed_int64_max_plus1(self):
         self.assertEqual(9223372036854775808, int('9223372036854775808'))
+
+    def test_int_of_int(self):
+        self.assertEqual(1, int(1))
+        self.assertEqual(6283, int(6283))
