@@ -20,3 +20,8 @@ class TestBooleanParsing(TestCase):
 
         self.assertEqual(bs, ss.encode('utf-8'))
         self.assertEqual(ss, bs.decode('utf-8'))
+
+    def test_zero(self):
+        self.assertFalse(bool(0), 'expecting 0 to parse to False')
+        self.assertFalse(bool(int("0")), 'expecting int("0") to parse to False')
+        self.assertTrue(bool('0'), 'expecting "0" to parse to True')
