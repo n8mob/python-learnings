@@ -15,3 +15,6 @@ class TestChainedInequalities(TestCase):
         self.assertTrue('B' > 'A')
         self.assertTrue('b' > 'A', 'big A')
         self.assertTrue('A' < 'Z' < 'a', 'holy moley!')
+
+    def test_four(self):
+        self.assertTrue(1 < 2 < 3 < 4)
