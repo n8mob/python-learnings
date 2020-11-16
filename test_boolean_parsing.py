@@ -2,6 +2,12 @@ from unittest import TestCase
 
 
 class TestBooleanParsing(TestCase):
+    def test_empty_string(self):
+        self.assertFalse('')
+
+    def test_whitespace_string(self):
+        self.assertTrue(' ')
+
     def test_string_just_like_source_code(self):
         input_true = 'True'
         input_false = 'False'
