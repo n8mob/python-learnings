@@ -4,13 +4,14 @@ KEY1 = 'key1'
 KEY2 = 'key2'
 KEY3 = 'key3'
 
+EMPTY_LIST = []
 VALUE2 = 'value2'
 
 
 class TestDictionaryKeys(TestCase):
     def setUp(self) -> None:
         self.non_empty_dict = {
-            KEY1: 'value1',
+            KEY1: EMPTY_LIST,
             KEY2: VALUE2,
         }
 
@@ -33,3 +34,6 @@ class TestDictionaryKeys(TestCase):
         actual = self.non_empty_dict.get(KEY3)
 
         self.assertFalse(actual, 'get returns None instead of throwing')
+
+    def test_empty_list_is_in(self):
+        self.assertIn(KEY1, self.non_empty_dict, 'value is empty, but the key should be in there')
