@@ -69,3 +69,20 @@ class TestDeepcopy(TestCase):
 
         self.assertEqual('k', source['a']['b'])
         self.assertEqual(source['a']['b'], dest['a']['b'])
+
+    def test_str_operations(self):
+        source = {
+            'a': 'b',
+        }
+
+        dest = source.copy()
+
+        dest['a'].replace('b', 'c')
+
+        self.assertEqual(source, dest)
+
+        dest['a'] = dest['a'].upper()
+
+        self.assertNotEqual(source['a'], dest['a'])
+        self.assertEqual('B', dest['a'])
+        self.assertNotEqual('B', source['a'])
