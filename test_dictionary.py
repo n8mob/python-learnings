@@ -8,7 +8,7 @@ EMPTY_LIST = []
 VALUE2 = 'value2'
 
 
-class TestDictionaryKeys(TestCase):
+class TestDictionary(TestCase):
     def setUp(self) -> None:
         self.non_empty_dict = {
             KEY1: EMPTY_LIST,
@@ -37,3 +37,12 @@ class TestDictionaryKeys(TestCase):
 
     def test_empty_list_is_in(self):
         self.assertIn(KEY1, self.non_empty_dict, 'value is empty, but the key should be in there')
+
+    def test_insert_new_key(self):
+        self.assertNotIn(KEY3, self.non_empty_dict, 'KEY3 not in dictionary is a pre-condition for this test')
+
+        test_value = "test"
+        self.non_empty_dict[KEY3] = test_value
+
+        self.assertIn(KEY3, self.non_empty_dict, 'KEY3 should now be in the dictionary')
+        self.assertEqual(test_value, self.non_empty_dict[KEY3], 'KEY3 should map to the test value')
