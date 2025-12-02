@@ -2,6 +2,7 @@ import unittest
 
 
 class TestWhenVariableNotDefined(unittest.TestCase):
+    # noinspection PyUnresolvedReferences,PyUnboundLocalVariable
     def test_nonexistent_variable(self):
         try:
             if nonexistent:
